@@ -5,12 +5,12 @@
 
 Summary:	Library for handling paper characteristics
 Name:		%{fname}
-Version:	1.1.21
+Version:	1.1.22
 Release:	%mkrel 1
 License:	LGPL
 Group:		System/Libraries
 URL:		http://packages.debian.org/unstable/source/libpaper
-Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{fname}_%{version}.tar.gz
+Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{fname}_%{version}.tar.bz2
 %ifarch x86_64
 BuildRequires:	chrpath
 %endif
