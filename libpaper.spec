@@ -14,6 +14,7 @@ Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{name}_%{version}
 %ifarch x86_64
 BuildRequires:	chrpath
 %endif
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 This package contains a simple library for use by programs needing
