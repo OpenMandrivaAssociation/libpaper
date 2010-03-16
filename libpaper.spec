@@ -6,7 +6,7 @@
 Summary:	Library for handling paper characteristics
 Name:		libpaper
 Version:	1.1.23
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	LGPL
 Group:		System/Libraries
 URL:		http://packages.debian.org/unstable/source/libpaper
