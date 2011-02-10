@@ -5,15 +5,16 @@
 
 Summary:	Library for handling paper characteristics
 Name:		libpaper
-Version:	1.1.23
-Release:	%mkrel 6
+Version:	1.1.24
+Release:	%mkrel 1
 License:	LGPL
 Group:		System/Libraries
 URL:		http://packages.debian.org/unstable/source/libpaper
-Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{name}_%{version}.tar.bz2
+Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{name}_%{version}.tar.gz
 # consult also LC_PAPER env var before bluntly falling back to "letter" (#45804)
 # https://bugzilla.redhat.com/show_bug.cgi?id=458833
 Patch0:		libpaper-useglibcfallback.patch
+Patch1:		libpaper-1.1.23-debianbug475683.patch
 %ifarch x86_64
 BuildRequires:	chrpath
 %endif
@@ -48,7 +49,7 @@ size).
 %package -n	%{staticdevelname}
 Summary:	Library for handling paper characteristics (development files)
 Group:		Development/C
-Requires:	%{libname}-devel = %{version}-%{release}
+Requires:	%{develname} = %{version}-%{release}
 Obsoletes:	%mklibname paper 1 -d -s
 
 %description -n %{staticdevelname}
@@ -71,6 +72,7 @@ size).
 %prep
 %setup -q -n libpaper-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure2_5x
