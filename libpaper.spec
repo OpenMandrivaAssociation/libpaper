@@ -6,7 +6,7 @@
 Summary:	Library for handling paper characteristics
 Name:		libpaper
 Version:	1.1.24
-Release:	%mkrel 2
+Release:	4
 License:	LGPL
 Group:		System/Libraries
 URL:		http://packages.debian.org/unstable/source/libpaper
@@ -18,7 +18,6 @@ Patch1:		libpaper-1.1.23-debianbug475683.patch
 %ifarch x86_64
 BuildRequires:	chrpath
 %endif
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 This package contains a simple library for use by programs needing
@@ -37,8 +36,6 @@ Summary:	Library for handling paper characteristics (development files)
 Group:		Development/C
 Provides:	libpaper-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
-Obsoletes:	%mklibname paper 1 -d
-Provides:	%mklibname paper 1 -d
 
 %description -n	%{develname}
 This package contains the development files for a simple library for use
@@ -50,7 +47,6 @@ size).
 Summary:	Library for handling paper characteristics (development files)
 Group:		Development/C
 Requires:	%{develname} = %{version}-%{release}
-Obsoletes:	%mklibname paper 1 -d -s
 
 %description -n %{staticdevelname}
 This package contains the development files for a simple library for use
@@ -79,8 +75,6 @@ size).
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
 %makeinstall_std
 
 # (tpg) this should close bug #31988
@@ -93,35 +87,93 @@ EOF
 chrpath -d %{buildroot}%{_bindir}/paperconf
 %endif
 
-%clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc ChangeLog COPYING debian/changelog
-%_includedir/*
+%{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.la
 
 %files -n %{staticdevelname}
-%defattr(-,root,root)
 %{_libdir}/*.a
 
 %files -n paper-utils
-%defattr(-,root,root)
 %doc README
 %config(noreplace) %{_sysconfdir}/papersize
 %{_bindir}/paperconf
 %{_sbindir}/paperconfig
 %{_mandir}/man*/*
+
+%changelog
+* Mon May 02 2011 Oden Eriksson <oeriksson@mandriva.com> 1.1.24-2mdv2011.0
++ Revision: 662393
+- mass rebuild
+
+* Thu Feb 10 2011 Funda Wang <fwang@mandriva.org> 1.1.24-1
++ Revision: 637177
+- new version 1.1.24
+- sync with fedora's patches
+
+* Sun Nov 28 2010 Oden Eriksson <oeriksson@mandriva.com> 1.1.23-6mdv2011.0
++ Revision: 602595
+- rebuild
+
+* Tue Mar 16 2010 Oden Eriksson <oeriksson@mandriva.com> 1.1.23-5mdv2010.1
++ Revision: 520897
+- rebuilt for 2010.1
+
+* Tue Oct 20 2009 Gustavo De Nardin <gustavodn@mandriva.com> 1.1.23-4mdv2010.0
++ Revision: 458482
+- consult also LC_PAPER env var before bluntly falling back to "letter" (#45804)
+
+* Wed Sep 02 2009 Christophe Fergeau <cfergeau@mandriva.com> 1.1.23-3mdv2010.0
++ Revision: 425687
+- rebuild
+
+* Tue Jun 17 2008 Thierry Vignaud <tv@mandriva.org> 1.1.23-2mdv2009.0
++ Revision: 222960
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Sun Jan 27 2008 Funda Wang <fwang@mandriva.org> 1.1.23-1mdv2008.1
++ Revision: 158853
+- update to new version 1.1.23
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Wed Aug 15 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 1.1.22-1mdv2008.0
++ Revision: 63691
+- fix bug #31988
+- new devel library policy
+- spec file clean
+- new version
+
+
+* Thu Feb 15 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 1.1.21-1mdv2007.0
++ Revision: 121263
+- bump version
+- fix url
+- make use of %%{major} and ldconfig for libraries
+- add clean routines in %%install
+- Import libpaper
+
+* Tue Mar 21 2006 Thierry Vignaud <tvignaud@mandriva.com> 1.1.8-8mdk
+- fix summary (#21690)
+
+* Wed Jan 18 2006 Thierry Vignaud <tvignaud@mandriva.com> 1.1.8-7mdk
+- fix libification
+
+* Mon Jan 16 2006 Thierry Vignaud <tvignaud@mandriva.com> 1.1.8-6mdk
+- fix build on x86_64
+
+* Sun Jan 01 2006 Mandriva Linux Team <http://www.mandrivaexpert.com/> 1.1.8-5mdk
+- Rebuild
+
