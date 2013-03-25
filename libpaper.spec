@@ -71,6 +71,11 @@ size).
 %patch1 -p1
 
 %build
+#fix build with new automake
+sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' configure.*
+touch NEWS AUTHORS
+libtoolize --copy --force
+autoreconf -fi
 %configure2_5x
 %make
 
