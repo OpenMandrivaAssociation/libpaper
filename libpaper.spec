@@ -5,7 +5,7 @@
 Summary:	Library for handling paper characteristics
 Name:		libpaper
 Version:	1.1.24
-Release:	19
+Release:	20
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://packages.debian.org/unstable/source/libpaper
