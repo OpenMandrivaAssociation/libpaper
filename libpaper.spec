@@ -4,8 +4,8 @@
 
 Summary:	Library for handling paper characteristics
 Name:		libpaper
-Version:	1.1.24
-Release:	20
+Version:	1.1.26
+Release:	1
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://packages.debian.org/unstable/source/libpaper
@@ -13,8 +13,7 @@ Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{name}_%{version}
 # consult also LC_PAPER env var before bluntly falling back to "letter" (#45804)
 # https://bugzilla.redhat.com/show_bug.cgi?id=458833
 Patch0:		libpaper-useglibcfallback.patch
-Patch1:		libpaper-1.1.23-debianbug475683.patch
-%ifarch x86_64
+%ifarch %{x86_64}
 BuildRequires:	chrpath
 %endif
 
@@ -73,7 +72,7 @@ cat > %{buildroot}%{_sysconfdir}/papersize << EOF
 # Simply write the paper name. See papersize(5) for possible values.
 EOF
 
-%ifarch x86_64
+%ifarch %{x86_64}
 chrpath -d %{buildroot}%{_bindir}/paperconf
 %endif
 
@@ -91,4 +90,3 @@ chrpath -d %{buildroot}%{_bindir}/paperconf
 %{_bindir}/paperconf
 %{_sbindir}/paperconfig
 %{_mandir}/man*/*
-

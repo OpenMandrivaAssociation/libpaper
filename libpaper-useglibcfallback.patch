@@ -1,6 +1,6 @@
-diff -up libpaper-1.1.24/lib/paper.c.useglibcfallback libpaper-1.1.24/lib/paper.c
---- libpaper-1.1.24/lib/paper.c.useglibcfallback	2010-04-24 08:12:11.000000000 -0400
-+++ libpaper-1.1.24/lib/paper.c	2010-04-24 12:04:59.549538425 -0400
+diff -up libpaper-1.1.26/lib/paper.c.0000~ libpaper-1.1.26/lib/paper.c
+--- libpaper-1.1.26/lib/paper.c.0000~	2018-12-02 22:15:41.000000000 +0100
++++ libpaper-1.1.26/lib/paper.c	2019-02-17 01:00:38.837876517 +0100
 @@ -20,6 +20,9 @@
  
  #include <unistd.h>
@@ -39,15 +39,12 @@ diff -up libpaper-1.1.24/lib/paper.c.useglibcfallback libpaper-1.1.24/lib/paper.
      return PAPERSIZE;
  }
  
-diff -up libpaper-1.1.24/man/paperconf.1.in.useglibcfallback libpaper-1.1.24/man/paperconf.1.in
---- libpaper-1.1.24/man/paperconf.1.in.useglibcfallback	2004-01-19 23:35:04.000000000 -0500
-+++ libpaper-1.1.24/man/paperconf.1.in	2010-04-24 12:03:56.866532268 -0400
-@@ -48,10 +48,12 @@ looking in order at the
- .B @PAPERSIZEVAR@
- environment variable, at the contents of the file specified by the
+diff -up libpaper-1.1.26/man/paperconf.1.in.0000~ libpaper-1.1.26/man/paperconf.1.in
+--- libpaper-1.1.26/man/paperconf.1.in.0000~	2019-02-17 01:00:38.837876517 +0100
++++ libpaper-1.1.26/man/paperconf.1.in	2019-02-17 01:02:23.884447732 +0100
+@@ -50,8 +50,10 @@ environment variable, at the contents of
  .B @PAPERCONFVAR@
--environment variable, at the contects of
-+environment variable, at the contents of the file
+ environment variable, at the contents of
  .B @PAPERCONF@
 -or by using
 -.B letter
@@ -58,9 +55,9 @@ diff -up libpaper-1.1.24/man/paperconf.1.in.useglibcfallback libpaper-1.1.24/man
  as a fall-back value if none of the other alternatives are successful.
  By default, width and height of the paper are printed in PostScript points.
  .SH OPTIONS
-diff -up libpaper-1.1.24/src/paperconf.c.useglibcfallback libpaper-1.1.24/src/paperconf.c
---- libpaper-1.1.24/src/paperconf.c.useglibcfallback	2007-09-26 02:13:38.000000000 -0400
-+++ libpaper-1.1.24/src/paperconf.c	2010-04-24 12:03:56.867538135 -0400
+diff -up libpaper-1.1.26/src/paperconf.c.0000~ libpaper-1.1.26/src/paperconf.c
+--- libpaper-1.1.26/src/paperconf.c.0000~	2012-05-03 21:05:12.000000000 +0200
++++ libpaper-1.1.26/src/paperconf.c	2019-02-17 01:00:38.837876517 +0100
 @@ -13,6 +13,7 @@
  #include <errno.h>
  
