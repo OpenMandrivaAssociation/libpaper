@@ -4,7 +4,7 @@
 
 Summary:	Library for handling paper characteristics
 Name:		libpaper
-Version:	1.1.26
+Version:	1.1.27
 Release:	1
 License:	LGPLv2
 Group:		System/Libraries
