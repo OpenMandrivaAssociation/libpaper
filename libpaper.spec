@@ -53,7 +53,7 @@ size).
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 #fix build with new automake
 sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' configure.*
 touch NEWS AUTHORS
