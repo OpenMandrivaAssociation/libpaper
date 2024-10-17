@@ -8,7 +8,7 @@ Version:	1.1.28
 Release:	2
 License:	LGPLv2
 Group:		System/Libraries
-Url:		http://packages.debian.org/unstable/source/libpaper
+Url:		https://packages.debian.org/unstable/source/libpaper
 Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{name}_%{version}.tar.gz
 # consult also LC_PAPER env var before bluntly falling back to "letter" (#45804)
 # https://bugzilla.redhat.com/show_bug.cgi?id=458833
