@@ -14,6 +14,11 @@ Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{name}_%{version}
 # https://bugzilla.redhat.com/show_bug.cgi?id=458833
 Patch0:		libpaper-useglibcfallback.patch
 %ifarch %{x86_64}
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	chrpath
 %endif
 
